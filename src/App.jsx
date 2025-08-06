@@ -1,9 +1,6 @@
-const App = () => {
+import './App.css'
+import WeatherForecast from './components/WeatherForecast'
 
-  return (
-    <h1>Hello world!</h1>
-  );
-}
 const weatherForecasts = [
   {
     day: 'Mon',
@@ -40,22 +37,24 @@ const weatherForecasts = [
     conditions: 'cloudy',
     time: 'Night',
   },
-];
+]
 
-const weatherForecasts = (props) =>{
+const App = () => {
   return (
     <>
-      <h2>Weather Forecasts</h2>
-      <ul>
-        {props.weather.map((weather) =>
-          <weatherForecasts
-            day={weather.day}
-            img={weather.img}
-            conditions={weather.conditions}
-            time={weather.time}
+      <h1>Local Weather</h1>
+      <section>
+        {weatherForecasts.map((forecast, index) => (
+          <WeatherForecast
+            key={index}
+            day={forecast.day}
+            img={forecast.img}
+            imgAlt={forecast.imgAlt}
+            conditions={forecast.conditions}
+            time={forecast.time}
           />
-        )}
-      </ul>
+        ))}
+      </section>
     </>
   )
 }
